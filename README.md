@@ -38,7 +38,7 @@ Responsive verification details and tested screen sizes are in [RESPONSIVE-QA.md
 
 - Portrait source: https://denizard-consulting.vercel.app/assets/founder-CfbbtqT2.png. Original retained in `dist/assets/gregory-denizard.png`; optimized WebP is used by the site. Replace with the new approved portrait when supplied.
 - Published education and role descriptions originate from the existing site/profile; owner sign-off remains appropriate before a public client launch.
-- No invented testimonials, customer logos or unsubstantiated performance metrics are included. Add approved testimonials and conference photographs when supplied.
+- The home page uses two sourced LinkedIn recommendation excerpts with their authors, dates and working relationships. Website use was approved by the client, as confirmed by the user on October 29, 2026. Add further approved testimonials and conference photographs when supplied.
 - Financial appointments route to the existing WFG profile. Confirm current company requirements before public financial marketing publication.
 - Academy joining routes to its public Skool page; Greg's additional personal-club URL remains pending.
 - Contact entries remain in the page and are placed into an email draft only when the visitor chooses it. No email is sent by the website. GHL integration is explicitly deferred.
@@ -48,6 +48,8 @@ Responsive verification details and tested screen sizes are in [RESPONSIVE-QA.md
 
 The local development server runs at http://localhost:8765. The brand is Denizard Consulting; Gregory remains the featured professional. Header and hero refinements live in src/refinements.css.
 
-## Client-story carousel and motion
+## Professional recommendations and motion
 
-The home-page carousel contains four clearly labeled design-preview cards in `testimonialPreviews` in `build.mjs`. Replace them with approved quotes and attribution when supplied. It supports automatic advance, pause/play, touch scrolling, keyboard arrows and direct slide selection. Hover, keyboard focus, reduced-motion preferences and off-screen visibility pause automatic movement. FAQs animate in both directions while retaining native details/summary semantics.
+The home-page carousel uses two verified professional recommendations in `testimonials` in `build.mjs`, from Julian Schaevitz (December 28, 2019) and Ronald Skeete (December 2, 2015). Both were checked in Greg’s LinkedIn Received recommendations on October 29, 2026. The short quotes are verbatim excerpts; accompanying context is paraphrased and the original relationship is shown. These concern professional leadership and Salesforce/nonprofit work. Source: https://www.linkedin.com/in/gregdenizard/. It supports automatic advance, pause/play, touch scrolling, keyboard arrows and direct slide selection. Hover, keyboard focus, reduced-motion preferences and off-screen visibility pause automatic movement. FAQs animate in both directions while retaining native details/summary semantics.
+
+Recommendation source details and original working relationships are recorded in `TESTIMONIAL-SOURCES.md`.

@@ -140,7 +140,7 @@ if(stories){
     index=(next+slides.length)%slides.length;
     viewport.scrollTo({left:slides[index].offsetLeft-slides[0].offsetLeft,behavior:motionPreference.matches?'instant':'smooth'});
     updateDots();
-    if(announce)status.textContent=`Story ${index+1} of ${slides.length}: ${slides[index].querySelector('h3').textContent}`;
+    if(announce)status.textContent=`Recommendation ${index+1} of ${slides.length}: ${slides[index].querySelector('h3').textContent}`;
   };
   const schedule=()=>{
     stop();
@@ -148,7 +148,7 @@ if(stories){
   };
   const updatePause=()=>{
     pause.setAttribute('aria-pressed',String(paused));
-    pause.setAttribute('aria-label',paused?'Play client stories':'Pause client stories');
+    pause.setAttribute('aria-label',paused?'Play recommendations':'Pause recommendations');
     pause.querySelector('span').textContent=paused?'▶':'Ⅱ';
   };
   stories.querySelector('.testimonials-controls').hidden=false;

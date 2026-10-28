@@ -121,7 +121,7 @@ html { scroll-padding-top: calc(var(--header-height) + 15px); }
   .motion-ready .reveal:not(.is-visible) { opacity: 1; translate: none; }
 }
 
-/* Client-story preview: approved testimonials can replace these sample cards. */
+/* Published professional recommendations, with source and original context. */
 .testimonials-section { background: var(--cream); }
 .testimonials-layout { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(32px, 7vw, 100px); align-items: center; }
 .testimonials-layout > * { min-width: 0; }
@@ -135,10 +135,17 @@ html { scroll-padding-top: calc(var(--header-height) + 15px); }
 .testimonial-number { white-space: nowrap; color: #8ea9ae; font-size: 8px; }
 .testimonial-quote-mark { display: block; height: 68px; font-family: var(--serif); font-size: 100px; line-height: 1; color: var(--mint); margin-top: 24px; }
 .testimonial-slide h3 { color: var(--paper); font-size: clamp(25px, 2.4vw, 34px); letter-spacing: -.6px; line-height: 1.2; }
-.testimonial-copy { min-height: 78px; margin-top: 20px; font-size: 13px; line-height: 1.85; color: #bed0d2; }
+.testimonial-slide blockquote { margin: 0; }
+.testimonial-copy { margin-top: 20px; font-size: 13px; line-height: 1.85; color: #bed0d2; }
 .testimonial-person { display: flex; align-items: center; gap: 13px; padding-top: 24px; margin-top: 24px; border-top: 1px solid #ffffff20; font-size: 11px; line-height: 1.6; }
 .testimonial-avatar { width: 42px; height: 42px; flex-shrink: 0; display: grid; place-items: center; border-radius: 50%; border: 1px solid #91ccbb55; color: var(--mint); font-family: var(--serif); font-size: 20px; }
 .testimonial-person small { display: block; color: #9eb8bc; font-size: 9px; margin-top: 3px; }
+.testimonial-person cite { font-style: normal; font-weight: 700; }
+.testimonial-person a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.testimonial-meta { display: grid; gap: 4px; margin-top: 16px; color: #9eb8bc; font-size: 9px; line-height: 1.7; }
+.testimonial-source { display: inline-flex; align-items: center; gap: 9px; margin-top: 15px; min-height: 44px; color: var(--mint); font-size: 11px; }
+.testimonial-source svg { width: 15px; height: 15px; }
+.testimonial-source:hover { text-decoration: underline; text-underline-offset: 4px; }
 .testimonials-controls { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 18px; }
 .testimonials-controls[hidden] { display: none; }
 .testimonial-dots, .testimonial-actions { display: flex; align-items: center; gap: 5px; }
