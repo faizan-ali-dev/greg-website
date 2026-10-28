@@ -12,6 +12,14 @@ node serve.mjs
 
 Local preview: http://127.0.0.1:8765
 
+## GitHub Pages
+
+The GitHub Actions workflow builds and publishes `dist/` on every push to `main`.
+Repository Settings → Pages → Source must be **GitHub Actions**.
+`SITE_ORIGIN` is supplied from the Pages configuration so canonical URLs, sharing images and the sitemap use the live address. Page and asset links are relative, so the same files work under `/greg-website/` and at a domain root.
+
+Preview URL: https://faizan-ali-dev.github.io/greg-website/
+
 Edit content/layout in `build.mjs`, styles in `src/style.css`, interactions in `src/site.js`. `dist/` is deployable static output.
 
 ## Working interactions

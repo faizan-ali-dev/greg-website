@@ -27,9 +27,9 @@ menu?.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMen
 matchMedia('(min-width: 1000px)').addEventListener('change',event=>{if(event.matches)closeMenu();});
 
 const serviceRoutes = {
-  financial: {title:'Your financial future',text:'Explore insurance protection, retirement strategies and business-owner needs through Greg’s official financial-services profile.',href:'/financial-services.html',button:'Explore financial services'},
-  crm: {title:'A CRM that works for your team',text:'Start with the problem: adoption, data, reporting or a rollout. Discover how Denizard Consulting can help.',href:'/crm-consulting.html',button:'Explore CRM consulting'},
-  community: {title:'Make room for meaningful growth',text:'Find connection, purposeful habits and a community centered on learning and personal development.',href:'/community.html',button:'Explore the community'}
+  financial: {title:'Your financial future',text:'Explore insurance protection, retirement strategies and business-owner needs through Greg’s official financial-services profile.',href:'./financial-services.html',button:'Explore financial services'},
+  crm: {title:'A CRM that works for your team',text:'Start with the problem: adoption, data, reporting or a rollout. Discover how Denizard Consulting can help.',href:'./crm-consulting.html',button:'Explore CRM consulting'},
+  community: {title:'Make room for meaningful growth',text:'Find connection, purposeful habits and a community centered on learning and personal development.',href:'./community.html',button:'Explore the community'}
 };
 document.querySelectorAll('[data-service-tab]').forEach(tab=>tab.addEventListener('click',()=>{
   document.querySelectorAll('[data-service-tab]').forEach(t=>{t.setAttribute('aria-pressed',String(t===tab));t.classList.toggle('selected',t===tab);});

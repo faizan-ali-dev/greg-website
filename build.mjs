@@ -1,5 +1,5 @@
 import {mkdir,writeFile,copyFile} from 'node:fs/promises';
-const origin=process.env.SITE_ORIGIN || 'http://localhost:8765';
+const origin=(process.env.SITE_ORIGIN || 'http://localhost:8765').replace(/\/+$/,'');
 const arrow='<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 const ext='<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 const icons={
@@ -86,11 +86,16 @@ const pages=[
  ['privacy.html','Privacy & Disclosures — Gregory Denizard','Read how this portfolio’s contact tools work, and find disclosures for the separate service areas featured here.','privacy',privacy]
 ];
 await mkdir('dist/assets',{recursive:true});
-for(const [file,title,description,active,body] of pages)await writeFile('dist/'+file,documentPage({title,description,active,body,slug:file==='index.html'?'':file}));
+for(const [file,title,description,active,body] of pages){
+ const html=documentPage({title,description,active,body,slug:file==='index.html'?'':file});
+ // All pages live together, so relative URLs work on a domain or a Pages project path.
+ await writeFile('dist/'+file,html.replace(/\b(href|src)="\/(?!\/)([^"]*)"/g,'$1="./$2"'));
+}
 await copyFile('src/style.css','dist/assets/style.css');
 await copyFile('src/refinements.css','dist/assets/refinements.css');
 await copyFile('src/site.js','dist/assets/site.js');
 await writeFile('dist/assets/favicon.svg','<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#112b3a"/><path d="M34 13a19 19 0 1 0 0 38" fill="none" stroke="#45b6a3" stroke-width="9"/><path d="M30 13a19 19 0 0 1 0 38" fill="none" stroke="#d02a3d" stroke-width="9"/></svg>');
 await writeFile('dist/robots.txt',`User-agent: *\nAllow: /\nSitemap: ${origin}/sitemap.xml\n`);
+await writeFile('dist/.nojekyll','');
 await writeFile('dist/sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${pages.filter(p=>p[0]!=='privacy.html').map(p=>`<url><loc>${origin}/${p[0]==='index.html'?'':p[0]}</loc></url>`).join('')}</urlset>`);
 console.log('Built 8 pages with shared assets, metadata and sitemap.');
