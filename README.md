@@ -47,3 +47,7 @@ Responsive verification details and tested screen sizes are in [RESPONSIVE-QA.md
 ## Local development preference
 
 The local development server runs at http://localhost:8765. The brand is Denizard Consulting; Gregory remains the featured professional. Header and hero refinements live in src/refinements.css.
+
+## Client-story carousel and motion
+
+The home-page carousel contains four clearly labeled design-preview cards in `testimonialPreviews` in `build.mjs`. Replace them with approved quotes and attribution when supplied. It supports automatic advance, pause/play, touch scrolling, keyboard arrows and direct slide selection. Hover, keyboard focus, reduced-motion preferences and off-screen visibility pause automatic movement. FAQs animate in both directions while retaining native details/summary semantics.
