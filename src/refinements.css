@@ -30,7 +30,7 @@ html { scroll-padding-top: calc(var(--header-height) + 15px); }
 .ticker-label > span { font-size: 18px; color: var(--mint); }
 .ticker-window { min-width: 0; flex: 1; overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 24px, #000 calc(100% - 24px), transparent); }
 .ticker-track { display: flex; width: max-content; height: 100%; animation: service-crawl 27s linear infinite; will-change: transform; }
-.ticker-group { display: flex; align-items: center; flex-shrink: 0; }
+.ticker-group { display: flex; align-items: center; justify-content: space-around; flex-shrink: 0; min-width: var(--ticker-window-width, 0px); }
 .ticker-group > a { display: flex; align-items: center; gap: 15px; padding: 14px 25px; color: #e2eee7; white-space: nowrap; font-size: 15px; line-height: 1.25; letter-spacing: -.2px; font-weight: 500; }
 .ticker-group > a > svg { width: 19px; height: 19px; color: var(--mint); }
 .ticker-number { color: #83a5a5; font-size: 8px; letter-spacing: 1px; }
@@ -38,7 +38,10 @@ html { scroll-padding-top: calc(var(--header-height) + 15px); }
 .ticker-toggle { width: 54px; border: 0; border-left: 1px solid #ffffff16; background: #0b2230; color: #c7e0d6; flex-shrink: 0; font-size: 17px; }
 .ticker-toggle:hover { background: #193a45; }
 .ticker-toggle[aria-pressed=true] .pause-symbol { font-size: 12px; }
-.service-ticker:hover .ticker-track, .service-ticker:focus-within .ticker-track, .service-ticker.is-paused .ticker-track { animation-play-state: paused; }
+.ticker-window:focus-within .ticker-track, .service-ticker.is-paused .ticker-track { animation-play-state: paused; }
+@media (hover: hover) and (pointer: fine) {
+  .ticker-window:hover .ticker-track { animation-play-state: paused; }
+}
 
 .hero-copy > .eyebrow { animation: hero-rise .65s .05s both; }
 .hero h1 { animation: hero-rise .75s .13s both; }
@@ -116,4 +119,61 @@ html { scroll-padding-top: calc(var(--header-height) + 15px); }
   .hero-grid { display: grid; }
   .service-ticker { display: none; }
   .motion-ready .reveal:not(.is-visible) { opacity: 1; translate: none; }
+}
+
+/* Layout guardrails: let real content reflow instead of hiding page overflow. */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scrollbar-gutter: stable; }
+.hero-grid > *, .inner-hero-grid > *, .service-grid > *, .about-grid > *,
+.credentials-inner > *, .steps-grid > *, .finder-grid > *, .faq-layout > *,
+.footer-main > *, .story-layout > *, .timeline > *, .education-grid > *,
+.detail-grid > *, .two-col > *, .problem-grid > *, .crm-service-grid > *,
+.feature-story > *, .community-values > *, .academy-feature > *,
+.reference-grid > *, .contact-grid > *, .form-row > * { min-width: 0; }
+h1, h2, h3, p, .text-link, .contact-item { overflow-wrap: break-word; }
+.button, input, select, textarea { max-width: 100%; min-width: 0; }
+.text-link { max-width: 100%; }
+.text-link > span { min-width: 0; }
+.hero-buttons, .button-row { flex-wrap: wrap; }
+.hero-buttons .button { flex: 0 0 auto; gap: 15px; }
+.hero-buttons .text-link { flex-shrink: 0; }
+.hero-buttons .text-link > span { white-space: nowrap; }
+.closing-inner, .small-banner { flex-wrap: wrap; }
+.closing-inner > div { min-width: 0; }
+.footer-bottom { flex-wrap: wrap; gap: 12px 24px; }
+.mission-note { padding: clamp(24px, 5vw, 50px); }
+.ticker-label { padding-left: clamp(24px, 5vw, 72px); }
+dialog { width: min(620px, calc(100% - 32px)); max-height: calc(100dvh - 32px); }
+dialog pre { max-height: min(32dvh, 250px); }
+
+@media (max-width: 999px) {
+  .menu-toggle { width: 44px; height: 44px; flex-shrink: 0; }
+  input, select, textarea { font-size: 16px; min-height: 48px; }
+  #main-nav .nav-cta { min-height: 44px; }
+  #main-nav { overscroll-behavior: contain; padding-inline: clamp(16px, 4vw, 32px); }
+  #main-nav > a:not(.button), .nav-services > summary { min-height: 44px; display: flex; align-items: center; }
+  .nav-dropdown a { min-height: 44px; }
+  .nav-dropdown a > span { min-width: 0; overflow-wrap: break-word; }
+}
+@media (max-width: 700px) {
+  .hero-buttons { gap: 16px 18px; }
+  .hero-buttons .button { padding-inline: 18px; }
+  .hero-buttons .text-link { min-height: 44px; }
+  .finder-options button { font-size: 9px; min-height: 84px; }
+  .finder-options button svg { width: 20px; height: 20px; }
+  .service-card .text-link, .faq summary { min-height: 48px; }
+  .social-link { width: 44px; height: 44px; }
+  .footer-main > div > a:not(.brand):not(.social-link) { min-height: 38px; display: flex; align-items: center; margin-bottom: 4px; }
+  .crm-orbit { width: min(250px, 100%); height: auto; aspect-ratio: 1; }
+  .crm-orbit.second { width: min(185px, 75%); height: auto; }
+  .mission-note h3 { font-size: clamp(34px, 13vw, 52px); }
+}
+@media (max-width: 359px) {
+  .credentials-inner { grid-template-columns: 1fr; gap: 22px; }
+  .credentials-inner > div { padding-block: 6px; }
+  .finder-options { grid-template-columns: 1fr; gap: 8px; }
+  .finder-options button { flex-direction: row; justify-content: flex-start; padding: 13px; gap: 13px; font-size: 11px; min-height: 48px; text-align: left; }
+  .community-values { grid-template-columns: 1fr; }
+  .community-values h3 { min-height: 0; }
+  .form-card { padding-inline: 18px; }
+  .form-card .button, .dialog-actions .button { width: 100%; }
 }

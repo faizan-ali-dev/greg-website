@@ -16,6 +16,8 @@ Edit content/layout in `build.mjs`, styles in `src/style.css`, interactions in `
 
 ## Working interactions
 
+Responsive verification details and tested screen sizes are in [RESPONSIVE-QA.md](RESPONSIVE-QA.md).
+
 - Responsive navigation, accessible native service menu and FAQs.
 - Service finder with three contextual destinations.
 - Contact query preselection and CRM organization field.
