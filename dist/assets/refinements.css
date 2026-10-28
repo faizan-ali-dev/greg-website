@@ -121,6 +121,31 @@ html { scroll-padding-top: calc(var(--header-height) + 15px); }
   .motion-ready .reveal:not(.is-visible) { opacity: 1; translate: none; }
 }
 
+/* Financial-service social destinations. */
+.financial-social-section { padding-bottom: 0; }
+.financial-socials { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.financial-socials li { min-width: 0; }
+.financial-socials a { min-height: 92px; padding: 20px 16px; display: flex; align-items: center; gap: 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); transition: border-color .2s, background-color .2s; }
+.financial-socials a:hover { border-color: var(--teal); background: var(--cream); }
+.financial-socials a:focus-visible { outline: 2px solid var(--teal); outline-offset: 4px; }
+.financial-social-icon { display: grid; place-items: center; flex: 0 0 26px; color: var(--teal); }
+.financial-social-icon svg { width: 24px; height: 24px; }
+.financial-social-name { min-width: 0; font-size: 12px; font-weight: 700; overflow-wrap: break-word; }
+.financial-socials a > svg { width: 15px; height: 15px; margin-left: auto; flex-shrink: 0; color: var(--muted); }
+@media (max-width: 1100px) {
+  .financial-socials { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 700px) {
+  .financial-socials { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .financial-socials a { min-height: 76px; padding: 15px 12px; gap: 9px; }
+}
+@media (max-width: 359px) {
+  .financial-socials { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .financial-socials a { transition: none; }
+}
+
 /* Layout guardrails: let real content reflow instead of hiding page overflow. */
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scrollbar-gutter: stable; }
 .hero-grid > *, .inner-hero-grid > *, .service-grid > *, .about-grid > *,
