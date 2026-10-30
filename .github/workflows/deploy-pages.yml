@@ -38,6 +38,7 @@ jobs:
         run: |
           node verify.mjs
           node --check src/site.js
+          node --check src/assistant.js
         env:
           SITE_ORIGIN: ${{ steps.pages.outputs.base_url }}
       - name: Upload website files

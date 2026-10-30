@@ -53,3 +53,7 @@ The local development server runs at http://localhost:8765. The brand is Denizar
 The home-page carousel uses two verified professional recommendations in `testimonials` in `build.mjs`, from Julian Schaevitz (December 28, 2019) and Ronald Skeete (December 2, 2015). Both were checked in Greg’s LinkedIn Received recommendations on October 29, 2026. The short quotes are verbatim excerpts; accompanying context is paraphrased and the original relationship is shown. These concern professional leadership and Salesforce/nonprofit work. Source: https://www.linkedin.com/in/gregdenizard/. It supports automatic advance, pause/play, touch scrolling, keyboard arrows and direct slide selection. Hover, keyboard focus, reduced-motion preferences and off-screen visibility pause automatic movement. FAQs animate in both directions while retaining native details/summary semantics.
 
 Recommendation source details and original working relationships are recorded in `TESTIMONIAL-SOURCES.md`.
+
+## Site assistant
+
+Every page has an "Ask about Greg" chat launcher (`src/assistant.js`, `src/assistant.css`). It is a scripted assistant. It matches the visitor's question to a fixed set of topics written from this site's content (services, background, contact, location, pricing approach, recommendations, languages and privacy), and it suggests follow-up questions. It runs entirely in the browser and sends or stores nothing. The privacy page says so. To connect a live AI or CRM service later, replace `reply()` in `src/assistant.js` and update the privacy copy.
